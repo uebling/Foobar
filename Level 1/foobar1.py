@@ -15,9 +15,7 @@ def solution(area):
 
     return panel_list
 
-
-print(int(12**0.5))
-
+#Below are some test cases
 print(str(solution(12)))
 print(solution(19))
 print(solution(15324))
