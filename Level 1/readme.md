@@ -1,0 +1,1 @@
+This was the first problem, which is quite simple. I was supposed to write an input integer as a sum of squares, and in case of multiple solutions only the sum with the largest possible square. THis can be simply found by calculating the square of the input and taking its floor. The subtract it, put it in a list, return the list. Time limit was 48 hours, very generous.
