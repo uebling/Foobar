@@ -10,9 +10,9 @@ Write a function that takes in a list of single digits and outputs the **largest
 
 
 ## Problem 2
-Get the shortest number of jumps on an 8x8 chessboard for a knight to reach field b from field a. The 2 fields are given as single integers from 0 to 63, not as x-y coordinates.
+Get the shortest number of jumps on an 8x8 chessboard for a **knight** to reach field **dest** from field **src**. The 2 fields are given as single integers from 0 to 63, not as x-y coordinates.
 I first create three helper functions:
-1. One to get the (x,y) coordinates from the number, because I prefer to thnik in terms of them rather than treating the board as a 1d list.
+1. One to get the (x,y) coordinates from the number, because I prefer to think in terms of them rather than treating the board as a 1d list.
 2. Another one to transform it back. 
 3. A function that returns a list of all reachable target fields from an input field. I have to take into account the boundaries of the field of course.
 
