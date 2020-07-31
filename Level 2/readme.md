@@ -16,10 +16,10 @@ I first create three helper functions:
 2. Another one to transform it back. 
 3. A function that returns a list of all reachable target fields from an input field. I have to take into account the boundaries of the field of course.
 
-Then I don't just try to calculate the distance to the target field, but to all fields. Because the field is quite small, that should not be a problem. It is rather simple now create an array with the same size as the board:
+Then I don't just try to calculate the distance to the target field, but to all fields. Because the board is quite small, that should not be a problem. It is rather simple now, I just create an array with the same size as the board and then:
 1. The starting field gets 0, because that is its distance from itself.
-2. All other fields get a very large number like 999
-3. Loop over all possible target fields, assign them distance 1
-4. Loop over all fields with distance 1 and assign their targets fields distance 2, unless there is already a shorter distance assigned
-5. Then loop over all fields with distance 2 etc... until no more 999s are there. Of course one could stop once the target field is reached, but in level 2 apparently runtim is not an issue yet.
+2. All other fields get a very large number like 999.
+3. Loop over all possible target fields, assign them distance 1.
+4. Loop over all fields with distance 1 and assign their targets fields distance 2, unless there is already a shorter distance assigned.
+5. Then loop over all fields with distance 2 etc... until no more 999s are there. Of course one could stop once the target field is reached, but in level 2 apparently runtime is not an issue yet.
 Then output the distance, done!
