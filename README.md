@@ -1,8 +1,6 @@
 # Foobar
 My solutions to the Google Foobar challenge.
 
-Will add individual descriptions later.
-
 Please try to solve the challenge first by yourself, before using this.
 
 I did not copy the exact description of the problems and cannot access them after submitting hte solutions. The challenge has 5 levels with the following number of problems: 1, 2, 3, 2, 1. There is a very generous time limit which goes from 2 days for level 1 to 22 days in level 5. The challenge is not that hard when it comes to programming, all you need is loops and ifs and maybe functions. Only basic Python libraries are available (not even math). I don't think I ever needed floats either, all problems are formulated in terms of integers. The difficulty on the higher levels is much more on the conceptual or mathematical side.
