@@ -1,7 +1,7 @@
 def solution(start, length):
     
     #XOR checksum from 0 to n
-    #Faster than actually calculationg it, using periodicity
+    #Faster than actually calculating it, using periodicity
     def csum0(n):
         if n % 4 == 0:
             return n
