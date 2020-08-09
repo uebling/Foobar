@@ -2,7 +2,7 @@
 Level 3 has 3 problems, each with a time limit of 4 days. Here I wrote down the name of each challenge, makes it easier to find other solutions on the internet.
 
 ## Problem 1
-###queue-to-do
+### queue-to-do
 There are workers standing in a queue of length L, each of these workers has a number, and they are ordered consecutively. In other words, if the first has number s, the second has s+1, etc. The securiry guys record each number and calculate the XOR checksum. Then they let all workers pass until the next queue assembles. There, they just check the first L-1 workers, and repeat the progress until they check no more numbers. They calculate the checksum for all workers they check and the challenge is to recreate the number with the parameters L,s as input.
 
 This was the first problem that took me some time to figure out. First I had no idea what "XOR-checksum" means, but this can be easily found out on wikipedia. A ^ B means representing both numbers A,B as binaries, then performing an XOR operation on each bit. Also, before programming this all by hand I found out that it is in Python by default, using the ^ symbol. Then getting all the numbers for the sum was easy, but some test cases just wouldn't pass. Then I realized that there is a well-hidden hint in the description that I have to be **faster** than the security guards. So my results were correct but not fast enough, apparently this ^ operation is not the fastest. So, the key here is to use the rules and a periodicity of the XOR operation:
