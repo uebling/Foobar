@@ -18,4 +18,19 @@ This was the first problem that took me some time to figure out. First I had no 
 Get the number of all possible lucky triples out of a given input list l. A lucky triple is a list of 3 integers a,b,c where a=<b=<c and b divides c and a divides b. Something like (3,6,24). This problem again has a simple solution (for each a and b, loop over all c and count), but it fails some of the test cases, so likely there is a speed issue again. even though this time I could not find a hint in the description about speed. But the list can be up to 2000 elements long which means having more than a billion triples to check. The solution here is to count lucky pairs first and make a list of them by counting for each list element how many lucky pairs it can form with the remaining numbers to the right of it (basically counting for each b how many fitting c-values there are). Then another loop goes over all a and just checks how many lucky pairs fit to it. This reduces the computational cost from N^3 to N^2, where N is the length of the list, enough to pass all test cases. There are probably even better ways to do this.
 
 ## Problem 3
-You have 2 populations of self-replicating bombs with a given reproduction cycle. Calculate the lowest number of cycles to reach a target population from an initial population.
+### Bomb, baby
+You have 2 populations of self-replicating bombs with a given reproduction cycle. Calculate the lowest number of cycles to reach a target population from an initial population. I forgot the exact names of the bomb types, but they started with M and F, appropriate for being able to reproduce. I use these letters to denote the number of each. They can reproduce according to two rules. \
+A: (M,F) -> (M,M+F)\
+B: (M,F) -> (M+F,F)\
+The goal is to find the number of reproduction cycles (A,B operations) needed to get from (M,F) = (1,1) to any target number where M,F can be up to 10^50! Also some target numbers might be unreachable, in that case, the solution should return the string "Impossible". Also important **The input and output are strings** presumably to make using huge numbers easier.
+
+This was a really nice challenge and rather easy to figure out. I quickly realized that one can represent the entire process as a binary tree with A,B operations splitting it up, and that it would be much simpler to find the way back to (1,1) from the target numbers rather than trying to use some search algorith to find the target from the start. The operations A,B can be represented by 2x2 matrices which are so simple that inverting them or calculating their n-th power is trivial. What is less trivial is using latex in markdown on Github, so I'll not write is down as matrices:\
+A^-1: (M,F) -> (M,F-M)\
+B^-1: (M,F) -> (M-F,F)\
+A^-n: (M,F) -> (M,F-nM)\
+B^-n: (M,F) -> (M-nF,F)\
+This is because only one of the numbers changes each time.
+
+To get to the start from any point in the tree, one just has to reach the edge, which is where either M or F is equal to 1. The rule is simple: if F > M use A^-1, if M>F use B^1, until one of them is 1. Since we know how many inverse operations we need until M-F filps sign, we just do one big step using the powers of A^-1 and B^-1. This makes is fast enough to handle even huge numbers for M,F.
+
+The impossible sitations are where M % F = 0 and none of them is 1. This will eventually lead to a situation where M = F, which cannot be reached from the starting point.
