@@ -13,4 +13,3 @@ def solution(l):
 				nt += list_of_pairs[j]
 
 	return nt
-print(solution(l1),solution(l2),solution(l3),solution(l4))
