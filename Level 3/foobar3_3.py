@@ -23,11 +23,7 @@ def solution(x,y):
 	#print(m,f)
 	return str(c + max(m,f) - 1)
 
-
-x = '1'+'0'*49
-y = '9'*50
-
 print(solution('2','1')) #1
 print(solution('4','7')) #4
 print(solution('2','4')) #imp
-print(solution(x,y))
+print(solution('1'+'0'*49,'9'*50)) #To check how long it takes for very large numbers
