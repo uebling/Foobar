@@ -52,15 +52,16 @@ def solution(dimensions, your_position, guard_position, distance):
     #Now the main program
     #first check for the case, where the room is too small
     #smaller rooms than 3x2 do not fit player and guard
-    #Use this to see if the library works this time
     if dimensions[0]*dimensions[1] < 6:
         return 0
+    #2nd edge case: Room could be so large that the guard is out of range for a direct shot
     if (guard_position[0]-your_position[0])**2 + (guard_position[1]-your_position[1])**2 > distance**2:
         return 0
     #Looks like that was in test case 5
     
     nmax = (distance//dimensions[0],distance//dimensions[1])
     
+    #Count all valid mirror targets
     c = 0
     for a in range(-nmax[0],nmax[0]+1):
         for b in range(-nmax[1],nmax[1]+1):
