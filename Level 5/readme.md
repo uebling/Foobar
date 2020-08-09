@@ -10,9 +10,12 @@ Those weird half-brackets above denote the **Floor** function, which rounds down
 On Wikipedia I came across an explicit formula for a sum ![f2] for the case of a rational number r = p/q and n being a multiple of q. The square root of 2 is not rational, but on a computer with a finite precision every number is rational. Here, sqrt(2) = 1.41421356237309504 = 141421356237309504/100000000000000000. There are also ways of approximating sqrt(2) via continued fractions, such as shown [here](https://en.wikipedia.org/wiki/Square_root_of_2). With this one could calculate the sum up to a value which allows sqrt(2) to be represented as a rational number and do the rest of the sum drirectly, but this can still mean having to calculate too many terms directly. If I ignore the conditions for the explicit formula and just use a value for n which is not a multiple of q, I actually get lots of test cases right but some results are off by +/-1.
 
 ### How to do it
-After more searching at some point I came across [Beatty's Theorem](https://www.cut-the-knot.org/proofs/Beatty2.shtml). This link contains everything to solve this problem. The sequence ![f3] is apparently called a Beatty sequence. Beatty's Theorem says that for each B_r there is a complementary series B_s where ![f4]
+After more searching at some point I came across [Beatty's Theorem](https://www.cut-the-knot.org/proofs/Beatty2.shtml). This link contains everything to solve this problem. The sequence ![f3] is apparently called a Beatty sequence. Beatty's Theorem says that for each ![Br] there is a complementary series ![Bs] where 1/r + 1/s = 1. Both series partition the natural numbers, which means that every natural number is either in B_r or B_s, never in both. In our case, ![f4] and ![f5], this smells like a recursive solution.
 
 [f1]: http://chart.apis.google.com/chart?cht=tx&chl=\sum_{i=1}^n\left\lfloor\sqrt(2)i\right\rfloor
 [f2]: http://chart.apis.google.com/chart?cht=tx&chl=\sum_{i=1}^n\left\lfloor{ri}\right\rfloor
 [f3]: http://chart.apis.google.com/chart?cht=tx&chl=B_r=\left\lfloor{ri}\right\rfloor
-[f4]: http://chart.apis.google.com/chart?cht=tx&chl=\frac{1}{r}+\frac{1}{s}=1
+[Br]: http://chart.apis.google.com/chart?cht=tx&chl=B_r
+[Bs]: http://chart.apis.google.com/chart?cht=tx&chl=B_s
+[f4]: http://chart.apis.google.com/chart?cht=tx&chl=r=\sqrt(2)
+[f4]: http://chart.apis.google.com/chart?cht=tx&chl=s=2+\sqrt(2)
