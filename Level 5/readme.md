@@ -42,4 +42,4 @@ which together with (2) allows us to calculate the sum recursively with only abo
 [f8]: http://chart.apis.google.com/chart?cht=tx&chl=n_s=N-1-n_r=\left\lfloor{}rn_r\right\rfloor-n_r=\left\lfloor{}(r-1)n_r\right\rfloor
 [f9]: http://chart.apis.google.com/chart?cht=tx&chl=\sum_{i=1}^{N-1}i=\frac{N(N-1)}{2}
 [f10]: http://chart.apis.google.com/chart?cht=tx&chl=\left\lfloor2%2B\sqrt{2}\right\rfloor=2%2B\left\lfloor\sqrt{2}\right\rfloor
-[f11]: http://chart.apis.google.com/chart?cht=tx&chl=\sum_{i=1}^{n_r}\left\lfloor\sqrt(2)i\right\rfloor=\frac{(n_r+n_s)(n_r+n_s+1)}{2}-n_s(n_s%2B1)-\sum_{i=1}^{n_s}\left\lfloor\sqrt(2)i\right\rfloor
+[f11]: http://chart.apis.google.com/chart?cht=tx&chl=\sum_{i=1}^{n_r}\left\lfloor\sqrt{2}i\right\rfloor=\frac{(n_r+n_s)(n_r+n_s+1)}{2}-n_s(n_s%2B1)-\sum_{i=1}^{n_s}\left\lfloor\sqrt{2}i\right\rfloor
