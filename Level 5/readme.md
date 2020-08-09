@@ -15,12 +15,18 @@ After more searching at some point I came across [Beatty's Theorem](https://www.
 Both series partition the natural numbers, which means that every natural number is either in B_r or B_s, never in both. In our case, ![f4] and ![f5], and with s being an integer (which can be pulled out of the floor function) plus sqrt(2), this already smells like a recursive solution can be constructed.
 
 The next step is to find out to which term we have to sum up ![Br] and ![Bs] to get the sum over all integers up to a certain number N. Since N=N/r+N/s, and therefore ![f6], we know how many terms of each sum we need:
-![f7]
+![f7] (1)
 
 where ![nr] and ![ns].
 
-We can express ns in terms of nr:
-![f8]
+We can now express ns in terms of nr and eliminate it:
+![f8] (2)
+
+With this, we have the recursion formula by taking Eq. (1) and using the well-known formula ![f9] as well as the fact that we can pull integers out of the floor function ![f10] and that N-1=nr+ns.
+
+The final result is
+![f11]:
+which together with (2) allows us to calculate the sum recursively with only about 1 term per order of magnitude of N. The only missing ingredient is getting the calculations accurate enough to calculate (2), for which we can use the library "decimal" which fortunately is allowed in the Foobar challenge.
 
 [f1]: http://chart.apis.google.com/chart?cht=tx&chl=\sum_{i=1}^n\left\lfloor\sqrt(2)i\right\rfloor
 [f2]: http://chart.apis.google.com/chart?cht=tx&chl=\sum_{i=1}^n\left\lfloor{ri}\right\rfloor
@@ -30,7 +36,10 @@ We can express ns in terms of nr:
 [f4]: http://chart.apis.google.com/chart?cht=tx&chl=r=\sqrt{2}
 [f5]: http://chart.apis.google.com/chart?cht=tx&chl=s=2%2B\sqrt{2}
 [f6]: http://chart.apis.google.com/chart?cht=tx&chl=N-1=\left\lfloor\frac{N}{r}\right\rfloor{}%2B{}\left\lfloor\frac{N}{s}\right\rfloor
-[f7]: http://chart.apis.google.com/chart?cht=tx&chl=\sum_{i=1}^{N-1}i=\sum_{i=1}^{n_r}\left\lfloor\sqrt(2)i\right\rfloor%2B\sum_{i=1}^{n_s}\left\lfloor2%2B\sqrt(2)i\right\rfloor
+[f7]: http://chart.apis.google.com/chart?cht=tx&chl=\sum_{i=1}^{N-1}i=\sum_{i=1}^{n_r}\left\lfloor\sqrt{2}i\right\rfloor%2B\sum_{i=1}^{n_s}\left\lfloor2i%2B\sqrt{2}i\right\rfloor
 [nr]: http://chart.apis.google.com/chart?cht=tx&chl=n_r=\left\lfloor\frac{N}{\sqrt{2}}\right\rfloor
 [ns]: http://chart.apis.google.com/chart?cht=tx&chl=n_s=\left\lfloor\frac{N}{2%2B\sqrt{2}}\right\rfloor
 [f8]: http://chart.apis.google.com/chart?cht=tx&chl=n_s=N-1-n_r=\left\lfloor{}rn_r\right\rfloor-n_r=\left\lfloor{}(r-1)n_r\right\rfloor
+[f9]: http://chart.apis.google.com/chart?cht=tx&chl=\sum_{i=1}^{N-1}i=\frac{N(N-1)}{2}
+[f10]: http://chart.apis.google.com/chart?cht=tx&chl=\left\lfloor2%2B\sqrt{2}\right\rfloor=2%2B\left\lfloor\sqrt{2}\right\rfloor
+[f11]: http://chart.apis.google.com/chart?cht=tx&chl=\sum_{i=1}^{n_r}\left\lfloor\sqrt(2)i\right\rfloor=\frac{(n_r+n_s)(n_r+n_s+1)}{2}-n_s(n_s%2B1)-\sum_{i=1}^{n_s}\left\lfloor\sqrt(2)i\right\rfloor
