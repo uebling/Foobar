@@ -14,7 +14,8 @@ After more searching at some point I came across [Beatty's Theorem](https://www.
 1/r+1/s=1.
 Both series partition the natural numbers, which means that every natural number is either in B_r or B_s, never in both. In our case, ![f4] and ![f5], and with s being an integer (which can be pulled out of the floor function) plus sqrt(2), this already smells like a recursive solution can be constructed.
 
-The next step is to find out to which term we have to sum up ![Br] and ![Bs] to get the sum over all integers up to N. Since N=N/r+N/s, and therefore ![f6], we know how many terms of each sum we need.
+The next step is to find out to which term we have to sum up ![Br] and ![Bs] to get the sum over all integers up to a certain number N. Since N=N/r+N/s, and therefore ![f6], we know how many terms of each sum we need:
+![f7], where ![nr] and ![ns].
 
 
 [f1]: http://chart.apis.google.com/chart?cht=tx&chl=\sum_{i=1}^n\left\lfloor\sqrt(2)i\right\rfloor
@@ -25,3 +26,6 @@ The next step is to find out to which term we have to sum up ![Br] and ![Bs] to 
 [f4]: http://chart.apis.google.com/chart?cht=tx&chl=r=\sqrt{2}
 [f5]: http://chart.apis.google.com/chart?cht=tx&chl=s=2%2B\sqrt{2}
 [f6]: http://chart.apis.google.com/chart?cht=tx&chl=N-1=\left\lfloor\frac{N}{r}\right\rfloor{}%2B{}\left\lfloor\frac{N}{s}\right\rfloor
+[f7]: http://chart.apis.google.com/chart?cht=tx&chl=\sum_{i=1}^{N-1}i=\sum_{i=1}^{n_r}\left\lfloor\sqrt(2)i\right\rfloor%2B\sum_{i=1}^{n_s}\left\lfloor2%2B\sqrt(2)i\right\rfloor
+[nr]: http://chart.apis.google.com/chart?cht=tx&chl=n_r=\left\lfloor\frac{N}{\sqrt{2}}\right\rfloor
+[ns]: http://chart.apis.google.com/chart?cht=tx&chl=n_r=\left\lfloor\frac{N}{2%2B\sqrt{2}}\right\rfloor
