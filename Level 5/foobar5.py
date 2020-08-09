@@ -3,7 +3,7 @@ import decimal
 def solution(s):
     '''Completely new attempt, after reading about Beatty sequences. There is a 
     way to calculate a recursion formula for the sum. Lots of work on paper, very short code...'''
-    decimal.getcontext().prec = 110
+    decimal.getcontext().prec = 101
     
     n = int(s)
     sqrt2 = decimal.Decimal(2).sqrt()
