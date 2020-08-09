@@ -28,7 +28,7 @@ The final result is
 ![f11]:
 which together with (2) allows us to calculate the sum recursively with only about 1 term per order of magnitude of N. The only missing ingredient is getting the calculations accurate enough to calculate (2), for which we can use the library "decimal" which fortunately is allowed in the Foobar challenge.
 
-[f1]: http://chart.apis.google.com/chart?cht=tx&chl=\sum_{i=1}^n\left\lfloor\sqrt(2)i\right\rfloor
+[f1]: http://chart.apis.google.com/chart?cht=tx&chl=\sum_{i=1}^n\left\lfloor\sqrt{2}i\right\rfloor
 [f2]: http://chart.apis.google.com/chart?cht=tx&chl=\sum_{i=1}^n\left\lfloor{ri}\right\rfloor
 [f3]: http://chart.apis.google.com/chart?cht=tx&chl=B_r=\left\lfloor{ri}\right\rfloor
 [Br]: http://chart.apis.google.com/chart?cht=tx&chl=B_r
