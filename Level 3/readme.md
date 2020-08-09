@@ -14,7 +14,8 @@ This was the first problem that took me some time to figure out. First I had no 
 5. With this, we can calculate the result with much fewer explicit ^ operations, and pass all test cases.
 
 ## Problem 2
-Get all possible happy (or lucky or magic, I don't remember) number triples out of a given list.
+### Find the access codes
+Get the number of all possible lucky triples out of a given input list l. A lucky triple is a list of 3 integers a,b,c where a=<b=<c and b divides c and a divides b. Something like (3,6,24). This problem again has a simple solution (for each a and b, loop over all c and count), but it fails some of the test cases, so likely there is a speed issue again. even though this time I could not find a hint in the description about speed. But the list can be up to 2000 elements long which means having more than a billion triples to check. The solution here is to count lucky pairs first and make a list of them by counting for each list element how many lucky pairs it can form with the remaining numbers to the right of it (basically counting for each b how many fitting c-values there are). Then another loop goes over all a and just checks how many lucky pairs fit to it. This reduces the computational cost from N^3 to N^2, where N is the length of the list, enough to pass all test cases. There are probably even better ways to do this.
 
 ## Problem 3
 You have 2 populations of self-replicating bombs with a given reproduction cycle. Calculate the lowest number of cycles to reach a target population from an initial population.
