@@ -5,7 +5,7 @@ Level 4 has 2 problems, each with a time limit of 15 days. A big jump!
 ### Gun to a guard fight
 You and a bad guy are trapped in a room with mirror walls. Calculate how many ways there are to shoot him with a laser gun that has a maximum effective range. And don't shoot yourself.
 
-This problem was surprisingly easy for level 4. The main challenge was to figure out what they mean by "dimensions" of the room and where the walls are relative to the lattice points. Then I stumbled over a Python peculiarity where I changed elements of a list without wanting to nor realizing that I did it.
+This problem was surprisingly easy for level 4 because it played right into my strengths. The main challenge was to figure out what they mean by "dimensions" of the room and where the walls are relative to the lattice points. Then I stumbled over a Python peculiarity where I changed elements of a list without wanting to nor realizing that I did it.
 
 The inputs here are:
 1. The "dimensions" of the room (which is rectangular)
@@ -31,4 +31,24 @@ Then we calculate the coordinates of all mirror images in range of the laser and
 
 
 ## Problem 2
-Reach the exit before the door closes and collect as many bunnies on the way as possible.
+### Running with bunnies
+Reach the exit before the door closes and collect as many bunnies on the way as possible. Much more challenging for me compared to the previous one, because I never had anything to do with graph theory in my life. So I had to use Google and Wikipedia.
+
+#### Layout
+There are up to 7 positions (nodes) here. The starting point, the end point and up to 5 places where there is a bunny. The goal is to pick up as many bunnies as possible before the door at the end point closes. The time it takes to get from a to b is given as a matrix, which is not necessarily symmetric. So going a->b may take a different time than b->a, for whatever reason. The travel time can also be negative, by triggering something which changes the time limit. 
+
+The input is a square matrix (Python list of lists) with zeroes on the diagonal, which contains all travel times. In graph theory, this is known as an **adjacency matrix**. The other input is the time limit.
+
+The solution has to return the best path as a list of the positions you move across. "Best" means to collect as many bunnies as possible and reach the exit before the time limit, and if several paths with the same number of bunnies are possible, return the one with the bunnies which have the lowest id numbers (according to the number of their location). While it is not stated explicitly the example provided made clear that one can carry more than one bunny at the same time.
+
+#### Approach
+After lots of fiddling around I came across the **Bellman-Ford** algorithm. This is a method to compute the **shortest** distance between points in a graph. It may be that going a -> b -> c is actually faster than the direct path a -> b, especially in a setup with asymmetric or negative distances. Negative distances can also lead to the existence of inifinite loops, where one can gain inifinite amount of times and therefore is always able to collect all bunnies.
+
+#### Optimized graph and infinite loops
+Using this Bellman-Ford algorithm I could obtain a new adjacency matrix which contains the shortest path between each node. This is done by repeatedly checking whether an indirect path is shorter than the direct one, until the matrix doesn't change anymore. An infinite loop manifests in the appearance of non-zero (negative) diagonal elements. As soon as such an element appears, the game is won and I can just end the program and return the full bunny list.
+
+#### Simplified problem
+The description explicitly states that one can re-visit previously visited nodes. However, once I had the optimized graph with the shortest routes between each node, I realized that on this graph it is no longer necessary to re-visit nodes (or the end node before I have the maximum possible number of bunnies). This means I just have to find the best path that visits the most possible intermediate nodes. These are up to 5 nodes, if the start is node 0 and the end node N, then the intermediate ones are 1,2,...,N-1, with no more than 5 possible intermediate nodes. I only need to visit each once, so I just have to check all possible permuations of 1,2,...,N-1, which is not a large number (5! = 120).
+
+#### Loop over all permuations
+So I loop over all permutation of 1,2,...,N-1 and for each permutation I check what is the longest path within the time limit (in other words, when I have to abort and head for the exit) and which bunnies I grab. From these I get the best result and voila, done!
